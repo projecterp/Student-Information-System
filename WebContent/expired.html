@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Under Construction</TITLE>
+<STYLE type=text/css>
+.spanstyle {
+	COLOR: brown;
+	FONT-FAMILY: Arial;
+	FONT-SIZE: 10pt;
+	FONT-WEIGHT: bold;
+	POSITION: absolute;
+	TOP: -50px;
+	VISIBILITY: visible
+}
+
+BODY {
+	SCROLLBAR-HIGHLIGHT-COLOR: gray;
+	SCROLLBAR-SHADOW-COLOR: gray;
+	SCROLLBAR-3DLIGHT-COLOR: gray;
+	SCROLLBAR-ARROW-COLOR: gray;
+	SCROLLBAR-TRACK-COLOR: gray;
+	SCROLLBAR-DARKSHADOW-COLOR: gray
+}
+</STYLE>
+<SCRIPT language=JavaScript>
+
+var x, y;
+var step = 15;
+var flag = 0;
+
+var message = " F a i s a l  B a s r a ";
+message = message.split("");
+var xpos = new Array();
+for (i = 0; i <= message.length - 1; i++) {
+xpos[i] = -50;
+}
+var ypos = new Array();
+for (i = 0; i <= message.length - 1; i++) {
+ypos[i]= -50;
+}
+function handlerMM(e) {
+x = (document.layers) ? e.pageX : document.body.scrollLeft + event.clientX;
+y = (document.layers) ? e.pageY : document.body.scrollTop + event.clientY;
+flag = 1;
+}
+function makesnake() {
+if (flag == 1 && document.all) {
+for (i = message.length - 1; i >= 1; i--) {
+xpos[i] = xpos[i - 1] + step;
+ypos[i] = ypos[i - 1];
+}
+xpos[0] = x + step;
+ypos[0] = y;
+for (i = 0; i < message.length - 1; i++) {
+var thisspan = eval("span" + (i) + ".style");
+thisspan.posLeft = xpos[i];
+thisspan.posTop = ypos[i];
+   }
+}
+else if (flag==1 && document.layers) {
+for (i = message.length - 1; i >= 1; i--) {
+xpos[i] = xpos[i - 1] + step;
+ypos[i] = ypos[i - 1];
+}
+xpos[0] = x + step;
+ypos[0] = y;
+for (i = 0; i < message.length - 1; i++) {
+var thisspan = eval("document.span" + i);
+thisspan.left = xpos[i];
+thisspan.top = ypos[i];
+   }
+}
+var timer = setTimeout("makesnake()", 10);
+}
+
+</SCRIPT>
+<BODY link=#ffffff text=#000000>
+
+</BODY>
+</HTML>
+<HTML>
+<BODY>
+
+	<p align="center">
+		<b><font face="Arial" size="7">Re-Login<font
+				color="#FF0000"> </font></font><font face="Arial" size="2"><a
+				href="login.jsp"> <font color="#FF0000">Login</font></a></font></b>
+	</p>
+	<p align="center">
+		<font size="5" face="Arial" color="#808080">Your Session has
+			been expired</font>
+	</p>
+	<div id="DivRule"
+		style="LEFT: 10px; WIDTH: 90%; POSITION: relative; TOP: 10px; HEIGHT: 30px">
+		<font
+			style="FONT-SIZE: 14pt; COLOR: #4e4e4e; LINE-HEIGHT: 14pt; FONT-FAMILY: Verdana, Arial, sans-serif">
+			Warning: Page has Expired </font>
+	</div>
+	<div id="Out0"
+		style="LEFT: 20px; WIDTH: 90%; POSITION: relative; TOP: 15px">
+		The page you requested was created using information you submitted in
+		a form. This page is no longer available. As a security precaution,
+		Internet Explorer does not automatically resubmit your information for
+		you. <br> &nbsp;
+	</div>
+	<p align="left">&nbsp;</p>
+
+</BODY>
+</HTML>
